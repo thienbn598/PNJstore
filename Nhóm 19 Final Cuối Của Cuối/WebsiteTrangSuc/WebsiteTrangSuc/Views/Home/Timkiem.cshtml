@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebsiteTrangSuc.Models.Sanpham>
+@*@using WebsiteTrangSuc.Models*@
+@{
+    ViewBag.Title = "Timkiem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<ul class="nav nav-tabs" style="padding-top:10px">
+    <li role="presentation" class="active" style="border-color:#428bca"><a href="#" style="background-color:#428bca;color:#ffffff">Kết quả tìm kiếm</a></li>
+</ul><p></p>
+@{
+   
+    if (ViewBag.thongbao !=null)
+    {
+        <div class="alert alert-warning" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign">
+                @ViewBag.thongbao
+            </span>
+
+        </div>
+    }
+    else
+    {
+        <div class="row">
+
+
+            @{
+
+                foreach (var item in Model)
+                {
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            <div class="hovergallery">
+                                <img src="@item.HinhAnh" alt="..." height="200" width="200">
+                            </div>
+
+                            <div class="caption">
+                                <h3>@item.Ten</h3>
+                                <p>- Mô tả : @item.MotaNgan</p>
+                                <p class="gachgia">- Giá cũ : @item.GiaCu ₫</p>
+                                <h4 style="color:#ff0000">- Giá mới : @item.GiaMoi ₫</h4>
+                                <p>
+                                    @Html.ActionLink("Chi tiết", "Chitietsanpham", "SanPham", new { id = item.id }, new { @class = "btn btn-default", @role = "button" })
+                                    @Html.ActionLink("Đặt Mua", "ThemGioHang", "GioHang", new { id = item.id }, new { @class = "btn btn-default", @role = "button" })
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+            }
+
+        </div>
+                }
+}
+
+
+
+

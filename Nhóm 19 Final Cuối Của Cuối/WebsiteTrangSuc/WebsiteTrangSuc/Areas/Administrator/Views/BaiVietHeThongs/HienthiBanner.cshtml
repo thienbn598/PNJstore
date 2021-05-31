@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebsiteTrangSuc.Models.BaiVietHeThong>
+
+@{
+    ViewBag.Title = "HienthiBanner";
+    Layout = "~/Areas/Administrator/Views/Shared/Admin_Layout.cshtml";
+}
+
+
+
+<div class="panel panel-default container MaginTop" style="margin-top:20px">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">
+           Danh sách BANNER
+            </h3>
+            </div>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.cCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cLangID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cUpdateTime)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.cCode, "SuaBanner", new { id = item.ID })
+                    @*@Html.DisplayFor(modelItem => item.cCode)*@
+                </td>
+                <td>
+                    <img src="@item.cValue" width="200" height="200" />
+                    @*@Html.DisplayFor(modelItem => item.cValue)*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cLangID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cUpdateTime)
+                </td>
+                @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+                    </td>*@
+            </tr>
+        }
+
+    </table>
+
+    </div>
+            

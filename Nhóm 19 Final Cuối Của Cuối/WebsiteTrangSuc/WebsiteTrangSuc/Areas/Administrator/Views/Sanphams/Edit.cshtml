@@ -1,0 +1,277 @@
+﻿@model WebsiteTrangSuc.Models.Sanpham
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Administrator/Views/Shared/Admin_Layout.cshtml";
+}
+
+<script>
+    $(function () {
+        $("#NgayNhap").datepicker();
+    });
+    $(function () {
+        $("#NgayCapNhatCuoi").datepicker();
+    });
+</script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Sửa thông tin sản phẩm</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaSanPham, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaSanPham, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MaSanPham, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdLoai, "IdLoai", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("IdLoai", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IdLoai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ten, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Ten, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Model, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MotaNgan, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.MotaNgan, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MotaNgan, "", new { @class = "text-danger" })
+            </div>
+            <script type="text/javascript">
+                CKEDITOR.replace("MotaNgan");
+            </script>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MotaChiTiet, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.MotaChiTiet, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MotaChiTiet, "", new { @class = "text-danger" })
+            </div>
+            <script type="text/javascript">
+                CKEDITOR.replace("MotaChiTiet");
+            </script>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TSKyThuat, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.TSKyThuat, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TSKyThuat, "", new { @class = "text-danger" })
+            </div>
+            <script type="text/javascript">
+                CKEDITOR.replace("TSKyThuat");
+            </script>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tukhoa, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Tukhoa, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Tukhoa, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdHang, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IdHang, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IdHang, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgayNhap, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NgayNhap, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NgayNhap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgayCapNhatCuoi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NgayCapNhatCuoi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NgayCapNhatCuoi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GiaCu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GiaCu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GiaCu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GiaMoi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GiaMoi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GiaMoi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Uutien, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Uutien, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Uutien, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ThucThi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ThucThi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ThucThi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HinhAnh, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.HinhAnh, new { @class = "form-control" } )
+                @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-1">
+                <input type="button" id="browse" value="Chọn file" class="btn btn-default" />
+            </div>
+            <script>
+                $("#browse").click(function () {
+                    var finder = new CKFinder();
+                    finder.selectActionFunction = function (fileUrl) {
+                        // fileUrl = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
+                        $("#HinhAnh").val(fileUrl);
+                    }
+                    finder.popup();
+                });
+
+            </script>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HinhAnh1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.HinhAnh1 ,new { @class = "form-control" } )
+                @Html.ValidationMessageFor(model => model.HinhAnh1, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-1">
+                <input type="button" id="browse1" value="Chọn file" class="btn btn-default" />
+            </div>
+            <script>
+                $("#browse1").click(function () {
+                    var finder = new CKFinder();
+                    finder.selectActionFunction = function (fileUrl) {
+                        // fileUrl = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
+                        $("#HinhAnh1").val(fileUrl);
+                    }
+                    finder.popup();
+                });
+
+            </script>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HinhAnh3, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.HinhAnh3,  new { @class = "form-control"  })
+                @Html.ValidationMessageFor(model => model.HinhAnh3, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-1">
+                <input type="button" id="browse3" value="Chọn file" class="btn btn-default" />
+            </div>
+            <script>
+                $("#browse3").click(function () {
+                    var finder = new CKFinder();
+                    finder.selectActionFunction = function (fileUrl) {
+                        // fileUrl = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
+                        $("#HinhAnh3").val(fileUrl);
+                    }
+                    finder.popup();
+                });
+
+            </script>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HinhAnh4, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.HinhAnh4,  new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.HinhAnh4, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-1">
+                <input type="button" id="browse4" value="Chọn file" class="btn btn-default" />
+            </div>
+            <script>
+                $("#browse4").click(function () {
+                    var finder = new CKFinder();
+                    finder.selectActionFunction = function (fileUrl) {
+                        // fileUrl = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
+                        $("#HinhAnh4").val(fileUrl);
+                    }
+                    finder.popup();
+                });
+
+            </script>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TieuBieu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.TieuBieu)
+                    @Html.ValidationMessageFor(model => model.TieuBieu, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ngonngu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Ngonngu, new { htmlAttributes = new { @class = "form-control" }*@
+                @Html.DropDownListFor(model => model.Ngonngu, new List<SelectListItem>
+          {
+              new SelectListItem() {Text="Tiếng Việt", Value="vi-VN" },
+              new SelectListItem() {Text="Tiếng Anh", Value="en-US" }
+          }, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Ngonngu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Trở lại", "Index")
+</div>

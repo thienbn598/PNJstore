@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    if (ViewBag.ms != null)
+    {
+        <div class="alert alert-warning" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign">
+                @ViewBag.ms
+            </span>
+
+        </div>
+    }
+}
+@using (Html.BeginForm("DangKy", "Home", FormMethod.Post))
+{
+    <div class="LoginLayout">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                - Đăng kí tài khoản
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8" style="padding-top:30px">
+                <div class="input-group">
+                    <span class="input-group-btn glyphicon glyphicon-user">
+                    </span>
+                    @Html.TextBox("txtHoTen", null, new { @class = "form-control", placeholder = "Họ tên" })
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div>
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <div class="input-group">
+                    <span class="input-group-btn glyphicon glyphicon-phone-alt">
+                    </span>
+                    @Html.TextBox("txtDienThoai", null, new { @class = "form-control", placeholder = "Điện thoại" })
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div>
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <div class="input-group">
+                    <span class="input-group-btn glyphicon glyphicon-home">
+                    </span>
+                    @Html.TextArea("txtDiaChi", null, new { @class = "form-control", placeholder = "Địa chỉ" })
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div>
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <div class="input-group">
+                    <span class="input-group-btn glyphicon glyphicon-user">
+                    </span>
+                    @Html.TextBox("txtTenDangNhap", null, new { @class = "form-control", placeholder = "Tên đăng nhập" })
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div>
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <div class="input-group">
+                    <span class="input-group-btn glyphicon glyphicon-lock">
+                    </span>
+                    @Html.Password("txtMatKhau", null, new { @class = "form-control", placeholder = "Mật khẩu" })
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div>
+        <div class="row">
+            <div class="col-md-offset-5 col-md-8">
+                <div class="input-group" style="padding-top:10px">
+                    <input type="submit" value="Đăng kí" class="btn btn-primary" />
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div>
+    </div>
+}
+
+

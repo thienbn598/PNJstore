@@ -1,0 +1,118 @@
+﻿@model IEnumerable<WebsiteTrangSuc.Models.HangSX>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Administrator/Views/Shared/Admin_Layout.cshtml";
+}
+<script>
+    $(function () {
+        $(".popup_button_delete").click(function (e) {
+            e.preventDefault();
+            bootbox.dialog({
+                message: "Bạn có chắc chắn muốn xóa các thông tin đã chọn không?",
+                title: "Xác nhận xóa thông tin",
+                buttons: {
+                    success: {
+                        label: "Đồng ý",
+                        className: "btn-success",
+                        callback: function () {
+                            $('form').submit();
+                            //__doPostBack('btnDelete', 'OnClick');
+                        }
+                    },
+                    danger: {
+                        label: "Quay lại",
+                        className: "btn-danger",
+                        callback: function () {
+                            //Example.show("Xem lại");
+                        }
+                    }
+                }
+            });
+            return false;
+        });
+    });
+</script>
+@using (Html.BeginForm("Delete", "HangSXes", FormMethod.Post))
+{
+    <div class="panel panel-default container MaginTop" style="margin-top:20px">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                Hãng sản xuất
+                <div class="btn-group" role="group" aria-label="..." style="float:right">
+                    @Html.ActionLink("Thêm mới", "Create", "HangSXes", new { @class = "btn btn-default" })
+                    <input type="submit" value="Xóa" , class="btn btn-default popup_button_delete" />
+                    @*@Html.ActionLink("Xóa", "Delete", "LoaiSanPham", new { @class = "btn btn-default" })*@
+                    @Html.ActionLink("Thoát", "Close", "HangSXes", new { @class = "btn btn-default" })
+                </div>
+            </h3>
+        </div>
+        <table class="table">
+            <tr>
+                <th>
+                    Chọn
+                </th>
+                <th>
+                    STT
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mota)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Website)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LienHe)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UTien)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ThucThi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NgonNgu)
+                </th>
+                <th></th>
+            </tr>
+            @{
+                var i = 1;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="idHang" id="idHang" value="@item.IdHang" />
+                        </td>
+                        <td>
+                            @i
+                        </td>
+                        <td>
+                            @Html.ActionLink(item.Mota, "Edit", new { id = item.IdHang })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Website)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LienHe)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UTien)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ThucThi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NgonNgu)
+                        </td>
+
+                    </tr>
+                    i++;
+                }
+            }
+
+
+        </table>
+    </div>
+                }
+
+    

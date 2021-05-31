@@ -1,0 +1,16 @@
+﻿ @*@using WebsiteTrangSuc.Models
+@{
+    ViewBag.Title = "Gioithieu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <h5 style="text-align:center">
+        @{
+            BaiVietHeThong gioithieu = ViewBag.gioithieu;
+            @Html.Raw(@gioithieu.cValue);
+        }
+    </h5>
+</div>*@
+

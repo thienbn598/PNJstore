@@ -1,0 +1,76 @@
+﻿@model WebsiteTrangSuc.Models.BaiVietHeThong
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Administrator/Views/Shared/Admin_Layout.cshtml";
+}
+
+<script>
+    $(function () {
+        $("#cUpdateTime").datepicker();
+    });
+ </script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Bài viết hệ thống</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.cCode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.cCode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.cCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.cValue, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.cValue, new { @class = "form-control"  })
+                @Html.ValidationMessageFor(model => model.cValue, "", new { @class = "text-danger" })
+            </div>
+            <script type="text/javascript">
+                CKEDITOR.replace("cValue");
+            </script>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.cLangID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.cLangID, new { htmlAttributes = new { @class = "form-control" } })*@
+               @Html.DropDownListFor(model => model.cLangID, new List<SelectListItem>
+          {
+              new SelectListItem() {Text="Tiếng Việt", Value="vi-VN" },
+              new SelectListItem() {Text="Tiếng Anh", Value="en-US" }
+          }, new { @class="form-control"})
+              
+                @Html.ValidationMessageFor(model => model.cLangID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.cUpdateTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+             <input type="text" value="@DateTime.Now" class="form-control" name="cUpdateTime" readonly="readonly"/>
+                       @*@Html.EditorFor(model => model.cUpdateTime, new { htmlAttributes = new { @class = "form-control" } })
+                       @Html.ValidationMessageFor(model => model.cUpdateTime, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Trở lại", "Index")
+</div>

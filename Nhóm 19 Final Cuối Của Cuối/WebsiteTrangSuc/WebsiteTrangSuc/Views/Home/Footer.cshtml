@@ -1,0 +1,11 @@
+﻿@using WebsiteTrangSuc.Models;
+
+<div class="container"><h5 style="text-align:center">
+    @{
+        BaiVietHeThong address = ViewBag.address;
+        @Html.Raw(@address.cValue);
+
+        
+    }
+                          
+    </h5></div>

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<WebsiteTrangSuc.Models.GioHang>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xem thông tin giỏ hàng</h2>
+@using (Html.BeginForm("TinhLai", "GioHang", FormMethod.Post))
+{
+<table class="table">
+    <thead>
+        <tr>
+            <td>Mã sản phẩm</td>
+            <td>Tên sản phẩm</td>
+            <td>Số lượng</td>
+            <td>Đơn giá</td>
+            <td>Thành Tiền</td>
+        </tr>
+    </thead>
+    <tbody>
+        @{ 
+            if (Model != null)
+            {
+                var tongtien = 0.0;
+                var thanhtien = 0;
+                foreach(var item in Model)
+                {
+                    thanhtien = (int)item.SoLuong * (int)item.Sanpham.GiaMoi;
+                    <tr>
+                        <td>
+                            <input type="hidden" name="id" id="id" value="@item.Sanpham.id"/>
+                        </td>
+                        <td>@item.Sanpham.Ten</td>
+                        <td>
+                            <input type="text" name="soluong" id="soluong" class="TextBoxDiem form-control" value="@item.SoLuong"/>
+                            
+                        </td>
+                        <td>
+                            <label class="txtDonGia">@item.Sanpham.GiaMoi</label>
+                        </td>
+                        <td>
+                            <label class="ThanhTien" id="thanhtien">@thanhtien</label>
+                        </td>
+                    </tr>
+                    tongtien = tongtien + thanhtien;
+                }
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Tính lại" class="btn btn-default"   />
+                        @Html.ActionLink("Thanh toán", "ThanhToan", "GioHang", new { @class = "btn btn-default" })
+                    </td>
+                    <td>
+                        Tổng tiền:
+                    </td>
+                    <td> @tongtien</td>
+                </tr>
+            }
+
+        }
+    </tbody>
+
+</table>
+}        

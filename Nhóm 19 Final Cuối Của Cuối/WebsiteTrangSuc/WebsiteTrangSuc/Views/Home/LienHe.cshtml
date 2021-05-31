@@ -1,0 +1,13 @@
+﻿@using WebsiteTrangSuc.Models
+@{
+    ViewBag.Title = "LienHe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h5 style="text-align:center">
+        @{ 
+            BaiVietHeThong lienhe = ViewBag.lienhe;
+            @Html.Raw(@lienhe.cValue);
+        }
+    </h5>
+</div>

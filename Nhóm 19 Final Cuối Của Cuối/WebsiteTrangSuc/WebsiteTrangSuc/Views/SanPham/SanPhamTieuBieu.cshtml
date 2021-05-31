@@ -1,0 +1,21 @@
+﻿@model IEnumerable<WebsiteTrangSuc.Models.Sanpham>
+    @{
+        foreach (var item in Model)
+        {
+            <div>
+                <div class="thumbnail hovergallery ">
+                    <img src="@item.HinhAnh" alt="..." width="200" height="200">
+                    <div class="caption">
+                        <p>@Html.ActionLink(item.Ten, "Chitietsanpham", "SanPham", new { id = item.id },null)</p>
+
+                        <p class="gachgia"> @item.GiaCu ₫</p>
+                        <h4 style="color:#ff0000"> @item.GiaMoi ₫</h4>
+                        <p>
+                            @*@Html.ActionLink("Chi tiết", "Chitietsanpham", "SanPham", new { id = item.id }, new { @class = "btn btn-default", @role = "button" })*@
+                            @Html.ActionLink("Đặt Mua", "ThemGioHang", "GioHang", new { id = item.id }, new { @class = "btn btn-success", @role = "button" })
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    }

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebsiteTrangSuc.Models.Chitietdonhang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Administrator/Views/Shared/Admin_Layout.cshtml";
+}
+
+<div class="panel panel-default container MaginTop" style="margin-top:20px">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">Chi tiết đơn hàng
+        </h3>
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdDonHang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdSanPham)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Soluong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dongia)
+            </th>
+            <th></th>
+        </tr>
+
+        @{
+            var i = 1;
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @i
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdDonHang)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdSanPham)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Soluong)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dongia)
+                    </td>
+                   
+                </tr>
+                i++;
+            }
+        }
+    </table>
+
+ </div>
+            

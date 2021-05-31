@@ -1,0 +1,32 @@
+﻿@using WebsiteTrangSuc.Models
+    <ol class="breadcrumb menucon1" data-spy="affix" data-offset-top="5">
+        @{ 
+            foreach(Menu item in ViewBag.dsmenu)
+            {
+               
+                 <li>
+                   <b>@Html.ActionLink(item.Ten, item.Trang, item.ThuMuc, new { @class="menucon"})</b>
+                </li>
+            }
+        }
+        <li style="float:right ; color:#ffffff" >
+            <a href="@Url.Action("Index","GioHang")" class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="color:#ffffff">
+                    
+            </a>
+                @{
+                    var giohang = (List<GioHang>)Session["giohang"];
+                    if (giohang != null)
+                    {
+                        <span class="badge">@giohang.Count</span>
+                    }
+                    else
+                    {
+                        <span class="badge">0</span>
+                    }
+                }
+            </a>
+        </li>
+    </ol>
+
+   
+

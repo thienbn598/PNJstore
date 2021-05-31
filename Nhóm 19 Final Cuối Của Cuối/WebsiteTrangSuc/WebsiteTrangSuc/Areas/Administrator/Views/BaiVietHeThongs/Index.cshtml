@@ -1,0 +1,81 @@
+﻿@model IEnumerable<WebsiteTrangSuc.Models.BaiVietHeThong>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Administrator/Views/Shared/Admin_Layout.cshtml";
+}
+
+
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<div class="panel panel-default container MaginTop">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            Quản lý bài viết hệ thống
+            <div class="btn-group" role="group" aria-label="..." style="float:right">
+                @*@Html.ActionLink("Thêm mới", "Create", "LoaiSanPham", new { @class = "btn btn-default" })
+                <input type="submit" value="Xóa" , class="btn btn-default popup_button_delete" />*@
+                @*@Html.ActionLink("Xóa", "Delete", "LoaiSanPham", new { @class = "btn btn-default" })*@
+                @Html.ActionLink("Thoát", "Close", "BaiVietHeThongs", new { @class = "btn btn-default" })
+            </div>
+        </h3>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <tr>
+                <th>
+                    STT
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cValue)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cLangID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cUpdateTime)
+                </th>
+                <th></th>
+            </tr>
+            @{
+                var i = 1;
+
+                foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @i
+                    </td>
+                    <td>
+                        @Html.ActionLink(item.cCode,"Edit", new  { id=item.ID})
+                        @*@Html.DisplayFor(modelItem => item.cCode)*@
+                    </td>
+                    <td>
+                        @Html.Raw(item.cValue)
+                        
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cLangID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cUpdateTime)
+                    </td>
+                    @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>*@
+                </tr>
+                    i++;
+                }
+
+                }
+        </table>
+</div>
+</div>

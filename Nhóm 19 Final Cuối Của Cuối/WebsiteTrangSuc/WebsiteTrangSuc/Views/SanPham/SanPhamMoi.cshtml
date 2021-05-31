@@ -1,0 +1,31 @@
+﻿@model IEnumerable<WebsiteTrangSuc.Models.Sanpham>
+<ul class="nav nav-tabs" style="padding-top:10px">
+    <li role="presentation" class="active" style="border-color:#428bca" ><a href="#"style="background-color:#428bca;color:#ffffff">Sản phẩm mới <img src="~/Media/Image/18035712_1443198155701311_384693474_n.gif" /></a></li>
+    </ul><p></p>
+    <div class="row">
+        @{
+            foreach (var item in Model)
+            {
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <div class="hovergallery">
+                            <img src="@item.HinhAnh" alt="..." height="200" width="200">
+                        </div>
+                        
+                        <div class="caption">
+                            <p>@Html.ActionLink(item.Ten,"Chitietsanpham","SanPham", new {id= item.id },null)</p>
+                            <p class="gachgia"> @item.GiaCu ₫</p>
+                            <h4 style="color:#ff0000"> @item.GiaMoi ₫</h4>
+                            <p>
+                                @*@Html.ActionLink("Chi tiết", "Chitietsanpham", "SanPham", new { id = item.id }, new { @class = "btn btn-default", @role = "button" })*@
+                                @Html.ActionLink("Đặt Mua", "ThemGioHang", "GioHang", new { id = item.id }, new { @class = "btn btn-success", @role = "button" })
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }
+
+    </div>
+ 

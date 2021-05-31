@@ -1,0 +1,112 @@
+﻿@model IEnumerable<WebsiteTrangSuc.Models.Donhang_KhachHang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Administrator/Views/Shared/Admin_Layout.cshtml";
+}
+
+
+
+
+<div class="panel panel-default container MaginTop" style="margin-top:20px">
+    <div class=" panel panel-heading">
+        <h4>
+            Danh sách đơn hàng khách hàng
+        </h4> 
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Idkhachhang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngaydat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngaygiao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Yeucau)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kieuthanhtoan)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Trangthai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngonngu)
+            </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.Duyet)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Tennguoinhan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DTnguoinhan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailnguoiNhan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diachinguoinhan)
+            </th>
+            <th></th>
+        </tr>
+
+        @{
+            var i = 1;
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Idkhachhang)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ngaydat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ngaygiao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Yeucau)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Kieuthanhtoan)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Trangthai)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ngonngu)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Duyet)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tennguoinhan)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DTnguoinhan)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailnguoiNhan)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Diachinguoinhan)
+                    </td>
+
+                </tr>
+            }
+            i++;
+        }
+        
+
+    </table>
+</div>
+    

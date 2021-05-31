@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang sức PNJ</title>
+    <link href="~/Areas/Administrator/Style/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/source/jquery.fancybox.js"></script>
+    <link href="~/source/jquery.fancybox.css" rel="stylesheet" />@*Thêm ảnh show ảnh*@
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    @*<script src="~/Areas/Administrator/Script/jquery-ui.js"></script>*@
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Content/jqBootstrapValidation.js"></script>
+
+   
+
+   
+
+</head>
+<body>
+    <div>
+        @Html.Action("Menu","Home")
+    </div>
+    <div >
+        @Html.Action("MenuCon","Home")
+    </div>
+    <div class="container">
+        @*class="container body-content">*@
+        <div class="row" style="margin-top:0px; padding-top:0px">
+            <div class=" col-sm-8 col-md-9">
+
+                @RenderBody()
+            </div>
+            <div class="col-sm-4 col-md-3">
+                <div class="container">
+                  @Html.Action("RightMenu","Home")
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <footer style="color:#ffffff; background-color:#428bca" >
+            @Html.Action("Footer","Home")
+        </footer>
+ </div>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="~/Content/jquery-1.11.3.min.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Content/bootstrap.js"></script>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Areas/Administrator/Script/bootbox.min.js"></script>
+    <script src="~/Areas/Administrator/Content/ckfinder/ckfinder.js"></script>
+    <script src="~/Areas/Administrator/Content/ckeditor/ckeditor.js"></script>
+    <link href="~/Areas/Administrator/Style/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Areas/Administrator/Script/jquery-ui.js"></script>
+</head>
+<body>
+    <div>
+        @Html.Action("Menu","Default")
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+﻿@model WebsiteTrangSuc.Models.HangSX
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Administrator/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HangSX</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Mota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Website)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Website)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LienHe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LienHe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UTien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UTien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThucThi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThucThi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgonNgu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgonNgu)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdHang }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

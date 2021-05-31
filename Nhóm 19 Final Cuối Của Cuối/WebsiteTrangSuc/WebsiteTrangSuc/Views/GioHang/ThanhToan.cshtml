@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "ThanhToan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    if (Session["ms"] != null)
+    {
+        <div class="alert alert-warning" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign">
+                @Session["ms"].ToString()
+            </span>
+            
+        </div>
+    }
+}
+<div class="progress_tab">
+    <div class="_progress-bar">
+        <ul class="step-breadcrumb _list">
+            <li class="step-breadcrumb _item -current">
+                <span class="step-breadcrumb _text">1. Đăng nhập</span>
+            </li>
+            <li class="step-breadcrumb _item ">
+                <span class="step-breadcrumb _text">2. Địa chỉ</span>
+            </li>
+            <li class="step-breadcrumb _item">
+                <span class="step-breadcrumb _text">3. Thanh Toán</span>
+            </li>
+        </ul>
+    </div>
+</div>
+@using (Html.BeginForm("DangNhap", "GioHang", FormMethod.Post))
+{
+<div class="LoginLayout" style="margin-top:20px">
+    <div class="col-md-offset-3 col-md-5">- Đăng nhập</div>
+    <div class="row">
+        <div class="col-md-offset-3 col-md-5">
+            <div class="input-group">
+                <span class="input-group-btn glyphicon glyphicon-user">
+                </span>
+                @Html.TextBox("txtTen", null, new { @class = "form-control", placeholder = "Tên đăng nhập" })
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div>
+    <div class="row">
+        <div class="col-md-offset-3 col-md-5">
+            <div class="input-group">
+                <span class="input-group-btn glyphicon glyphicon-lock">
+
+                </span>
+                @Html.Password("txtMatKhau", null, new { @class = "form-control", placeholder = "Mật khẩu" })
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div>
+    <div class="row">
+        <div class="col-md-offset-4 col-md-6">
+            <div class="input-group" style="padding-top:10px">
+                <input type="submit" value="Đăng nhập" class="btn btn-primary" />
+           @Html.ActionLink("Đăng kí tài khoản","DangKy","GioHang")
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div>
+</div>
+
+}
+

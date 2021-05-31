@@ -1,0 +1,206 @@
+﻿@model IEnumerable<WebsiteTrangSuc.Models.Sanpham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Administrator/Views/Shared/Admin_Layout.cshtml";
+}
+<script>
+    $(function () {
+        $(".popup_button_delete").click(function (e) {
+            e.preventDefault();
+            bootbox.dialog({
+                message: "Bạn có chắc chắn muốn xóa các thông tin đã chọn không?",
+                title: "Xác nhận xóa thông tin",
+                buttons: {
+                    success: {
+                        label: "Đồng ý",
+                        className: "btn-success",
+                        callback: function () {
+                            $('form').submit();
+                            //__doPostBack('btnDelete', 'OnClick');
+                        }
+                    },
+                    danger: {
+                        label: "Quay lại",
+                        className: "btn-danger",
+                        callback: function () {
+                            //Example.show("Xem lại");
+                        }
+                    }
+                }
+            });
+            return false;
+        });
+    });
+</script>
+@using (Html.BeginForm("Delete", "Sanphams", FormMethod.Post))
+{
+    <h1></h1>
+    <div class="panel panel-default container MaginTop">
+
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                Quản lý sản phẩm
+                <div class="btn-group" role="group" aria-label="..." style="float:right">
+                    @Html.ActionLink("Thêm mới", "Create", "Sanphams", new { @class = "btn btn-default" })
+                    <input type="submit" value="Xóa" , class="btn btn-default popup_button_delete" />
+                    @*@Html.ActionLink("Xóa", "Delete", "LoaiSanPham", new { @class = "btn btn-default" })*@
+                    @Html.ActionLink("Thoát", "Close", "Sanphams", new { @class = "btn btn-default" })
+                </div>
+            </h3>
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <tr>
+                    <th>Chọn</th>
+                    <th>STT</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LoaiSanPham.Ten)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MaSanPham)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Ten)
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.Model)
+                        </th>*@
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.MotaNgan)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.MotaChiTiet)
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.TSKyThuat)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tukhoa)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdHang)
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.NgayNhap)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NgayCapNhatCuoi)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.GiaCu)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GiaMoi)
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.Uutien)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.ThucThi)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.HinhAnh)
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.HinhAnh1)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.HinhAnh3)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.HinhAnh4)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.TieuBieu)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Ngonngu)
+                    </th>
+                    <th></th>
+                </tr>
+                @{
+                    var i = 1;
+
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="id" id="id" value="@item.id" />
+                            </td>
+                            <td>@i</td>
+                            <td>
+                                @*@Html.DisplayFor(modelItem => item.LoaiSanPham.Ten)*@
+                                @Html.ActionLink(item.Ten, "Edit", new { id = item.id })
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MaSanPham)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Ten)
+                            </td>
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.Model)
+                                </td>*@
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.MotaNgan)
+                                </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MotaChiTiet)
+                            </td>
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.TSKyThuat)
+                                </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Tukhoa)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdHang)
+                            </td>
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.NgayNhap)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NgayCapNhatCuoi)
+                                </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.GiaCu)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.GiaMoi)
+                            </td>
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.Uutien)
+                                </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ThucThi)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HinhAnh)
+                            </td>
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.HinhAnh1)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HinhAnh3)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HinhAnh4)
+                                </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TieuBieu)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Ngonngu)
+                            </td>
+
+                        </tr>
+                        i++;
+                    }
+                }
+            </table>
+        </div>
+
+    </div>
+
+ }

@@ -1,0 +1,68 @@
+﻿@using WebsiteTrangSuc.Models
+
+<nav class="navbar navbar-default" >
+    
+    <div style=" padding-right:10px; float:right" class="menucon">
+
+
+
+        @{
+            if (Session["KH"] != null)
+            {
+                KhachHang kh = (KhachHang)Session["KH"];
+                <span class="input-group-btn glyphicon glyphicon-user" style="width:50px">
+                    @Html.ActionLink(kh.Tenkhachhang, "Thongtinkhachhang", "KhachHang", new { @class = "menucon" })
+                </span>
+                    <span class="input-group-btn glyphicon glyphicon-remove" style="width:50px; padding-left:5px">
+                        @Html.ActionLink("Đăng xuất", "Thoat", "Home", new { @class = "menucon" })
+                    </span>
+
+
+            }
+            else
+            {
+                <span class="input-group-btn glyphicon glyphicon-user" style="width:50px">
+                    @Html.ActionLink("Đăng nhập", "DangNhap", "Home", new { @class = "menucon" })
+                </span>
+                        <span class="input-group-btn glyphicon glyphicon-pencil" style="width:50px; padding-left:5px">
+                            @Html.ActionLink("Đăng ký", "DangKy", "Home", new { @class = "menucon" })
+                        </span>
+            }
+        }
+    </div>
+
+        <div style="padding-top:30px;float:right" class="menucon">
+            <span class=" glyphicon glyphicon-phone-alt" >Hotnumber:
+                @Html.Action("Hotnumber", "Home")
+            </span>
+        </div>
+
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="@Url.Action("Index","Home")"><img src="@Url.Content("~/Media/Image/ICON3.png")" alt="Home" height="50px" width="70px" /></a>
+            @*<a href="~/Views/Home/Index.cshtml">
+                <img src="~/Media/Image/ICON3.png" height="50px" width="70px" />
+            </a>*@
+        </div>
+    </div>
+    @using (Html.BeginForm("TimKiem", "Home", FormMethod.Post))
+    {
+            <div id="searchbox" >
+                <input id="txtTimKiem" name="txtTimKiem" type="text" size="15" placeholder="Nhập nội dung cần tìm kiếm...." />
+                <input id="button-submit" type="submit" value="Search" />
+            </div>
+
+        //method = "get" action = "/search"
+    }
+    
+   
+</nav>
+
+

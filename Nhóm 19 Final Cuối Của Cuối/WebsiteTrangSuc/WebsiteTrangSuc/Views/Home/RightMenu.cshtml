@@ -1,0 +1,27 @@
+﻿@model IEnumerable<WebsiteTrangSuc.Models.LoaiSanPham>
+<div class="list-group">
+    <a href="#" class="list-group-item active">
+        DANH MỤC SẢN PHẨM
+    </a>
+    @{ 
+        foreach (var item in Model)
+        {
+            @Html.ActionLink(item.Ten,"DanhMucSP","SanPham", new {id=item.IdLoai, },new  {@class= "list-group-item" });
+        }
+    }
+    @*<a href="#" class="list-group-item">Trang sức bạc</a>
+    <a href="#" class="list-group-item">Trang sức vàng</a>
+    <a href="#" class="list-group-item">Trang sức kim cương</a>
+    <a href="#" class="list-group-item">Trang sức linh tinh</a>*@
+</div>
+<div class="list-group">
+    <a href="=#" class="list-group-item active">
+       SẢN PHẨM BÁN CHẠY
+    </a>
+    <div>
+        @Html.Action("SanPhamTieuBieu","SanPham")
+    </div>
+
+    </div>
+
+

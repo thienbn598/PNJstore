@@ -1,0 +1,68 @@
+﻿@model WebsiteTrangSuc.Models.Sanpham
+@using WebsiteTrangSuc.Models
+@{
+    ViewBag.Title = "Chitietsanpham";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<ul class="nav nav-tabs" style="padding-top:10px">
+    <li role="presentation" class="active" style="border-color:#428bca"><a href="#" style="background-color:#428bca;color:#ffffff">Chi tiết sản phẩm</a></li>
+</ul><p></p>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-sm-6 col-md-6">
+        <div class="thumbnail hovergallery">
+            <img src="@Model.HinhAnh" alt="...">
+            <div class="caption">
+
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-6">
+        <div class="caption">
+            <p>@Model.Ten</p>
+            <p>- Mã sản phẩm : @Model.MaSanPham</p>
+            <hr />
+            
+            <p class="gachgia">- Giá cũ : @Model.GiaCu ₫</p>
+            <h4 style="color:#ff0000">- Giá mới : @Model.GiaMoi ₫</h4>
+           <p>@Html.ActionLink("Đặt Mua", "ThemGioHang", "GioHang", new { id = Model.id }, new { @class = "btn btn-success", @role = "button" })</p>
+        </div>
+    </div>
+</div>
+<div>
+    <ul class="nav nav-tabs" style="padding-top:10px">
+        <li role="presentation" class="active" style="border-color:#428bca"><a href="#" style="background-color:#428bca;color:#ffffff">Mô tả sản phẩm</a></li>
+    </ul>
+   <p>@Html.Raw(Model.MotaChiTiet)
+</p> 
+</div>
+<div>
+    <ul class="nav nav-tabs" style="padding-top:10px">
+        <li role="presentation" class="active" style="border-color:#428bca"><a href="#" style="background-color:#428bca;color:#ffffff">Sản phẩm liên quan</a></li>
+    </ul>
+    <div class="row">
+        @{
+            foreach (Sanpham item in ViewBag.sqlq)
+            {
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail hovergallery">
+                        <img src="@item.HinhAnh" alt="...">
+                        <div class="caption">
+                            <p>@Html.ActionLink(item.Ten, "Chitietsanpham", "SanPham", new { id = item.id }, null)</p>
+                            <p class="gachgia">@item.GiaCu ₫</p>
+                            <h4 style="color:#ff0000">@item.GiaMoi ₫</h4>
+                            <p>
+                                @*@Html.ActionLink("Chi tiết", "Chitietsanpham", "SanPham", new { id = item.id }, new { @class = "btn btn-default", @role = "button" })*@
+                                @Html.ActionLink("Đặt Mua", "", "SanPham", new { id = item.id }, new { @class = "btn btn-success", @role = "button" })
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }
+    </div>
+    </div>
+
+
+
